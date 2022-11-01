@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\MixRepository;
 use Psr\Cache\CacheItemInterface;
+use App\Repository\VinylMixRepository;
 use function Symfony\Component\String\u;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,7 @@ class VinylController extends AbstractController
     }
 
     #[Route('/browse/{slug}', name: 'app_browse')]
-    public function browse(HttpClientInterface $httpClient, CacheInterface $cache, MixRepository $mixRepository, string $slug = null): Response
+    public function browse(VinylMixRepository $mixRepository, string $slug = null): Response
     {
         $genre = $slug ? u(str_replace('-', ' ', $slug))->title(true) : null;
         

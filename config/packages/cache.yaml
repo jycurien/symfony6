@@ -1,8 +1,4 @@
 framework:
     cache:
-        app: cache.adapter.filesystem
 
-when@dev:
-    framework:
-        cache:
-            app: cache.adapter.array
+        app: '%cache_adapter%'
